@@ -61,6 +61,6 @@ class Converter:
         outfile.write(self.pic_str)
         outfile.close()
 
-
-# conv = Converter()
-# conv.ConvImage('*.jpg', '*.htm')
+# if __name__ == '__main__' :
+#     conv = Converter()
+#     conv.ConvImage('*.jpg', '*.htm')

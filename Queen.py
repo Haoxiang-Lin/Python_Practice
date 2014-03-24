@@ -56,6 +56,6 @@ class QueenChess:
             print '\n'
         raw_input('Press <Enter> to continue')
 
-# 具体实现
-# chess = QueenChess()
-# chess.Solves()
+# if __name__ == '__main__' :
+#     chess = QueenChess()
+#     chess.Solves()
