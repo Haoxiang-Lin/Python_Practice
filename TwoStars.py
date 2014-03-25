@@ -110,8 +110,8 @@ def main():
         #读取两个变量
         var_h.append(var_list[var_list_str.index(var_h_str)])
         var_v.append(var_list[var_list_str.index(var_v_str)])
-        #画图
-        Draw(var_h, var_v, 'Light Curve', var_h_str, var_v_str)
+    #画图
+    Draw(var_h, var_v, 'Light Curve', var_h_str, var_v_str)
 
 if __name__ == '__main__':
     main()
