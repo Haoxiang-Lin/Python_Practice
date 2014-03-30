@@ -41,7 +41,7 @@ class RandomWalk:
             plt.ylabel('y')
             plt.title('Free Random Walk')
             plt.show()
-        self.k = 0
+        self.__init__()
 
     def NRRW(self, N):
         """
@@ -72,7 +72,7 @@ class RandomWalk:
             plt.ylabel('y')
             plt.title('Non Reversal Random Walk')
             plt.show()
-        self.k = 0
+        self.__init__()
 
     def SAW(self, N):
         """
@@ -102,13 +102,14 @@ class RandomWalk:
                     self.__init__()
                     self.SAW(N)
                     exit(0)
+
             for i in range(len(pre) - 1):
                 plt.plot([pre[i][0], pre[i+1][0]], [pre[i][1], pre[i+1][1]])
             plt.xlabel('x')
             plt.ylabel('y')
             plt.title('Self-Avoiding Random Walk')
             plt.show()
-        self.k = 0
+        self.__init__()
 
 
 # if __name__ == '__main__' :
