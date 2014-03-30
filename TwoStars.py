@@ -9,9 +9,9 @@ def OpenData(file_name):
     '''
     log = open(file_name, 'r')
     data = []
-    #去文件头
+    #去掉第一行
     log.readline()
-    #读取数据并转换为数字
+    #读取数据并转换为
     for line in log:
         data.append( [float(str) for str in list(line.split())] )
     log.close()
@@ -49,10 +49,8 @@ def Draw(var_h, var_v):
     plt.ylabel(r'Magnitude', fontdict=font)
     #plt.ylabel(r'Luminosity\ $ (L_{\bigodot}) $', fontdict=font)
     plt.subplots_adjust(left=0.15)
-    #plt.axis([0.85, 1, -2.6, -1.4])
-    #plt.axis([0.28, 0.45, -2.6, -1.4])
-    plt.axis([0, 1, -2.6, -1.4])
-    plt.legend(loc='center left')
+    #plt.axis([0, 1, -2.6, -1.4])
+    plt.legend(loc='lower left')
     plt.gca().invert_yaxis()
     plt.show()
 
@@ -71,10 +69,9 @@ def main():
     var_h = []
     var_v = []
     i = 0
-    while True :
+    file_name = '0'
+    while file_name != '91' :
         file_name = str(i)#raw_input('  Input name of the file from TwoStars.cpp (Input "ok" if done): ')
-        if file_name == '91' :
-            break
         #打开文件
         var_list = OpenData(file_name)
         #读取两个变量
