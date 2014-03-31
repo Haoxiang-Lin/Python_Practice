@@ -12,7 +12,27 @@ class RandomWalk:
         self.x = 0                         #坐标x
         self.y = 0                         #坐标y
         self.k = 0                         #步数
-        self.v = choice([0, 1, 2, 3])      #前一步记忆
+        self.v = choice([0, 1, 2, 3])      #方向记忆
+        self.pre = []                      #坐标记忆
+
+    def Walk(self):
+        if self.v == 0 :
+            self.x += 1
+        elif self.v == 1 :
+            self.y += 1
+        elif self.v == 2 :
+            self.x += -1
+        elif self.v == 3 :
+             self.y += -1
+        self.k += 1
+
+    def Draw(self):
+        for i in range(len(self.pre) - 1):
+                plt.plot([self.pre[i][0], self.pre[i+1][0]], [self.pre[i][1], self.pre[i+1][1]])
+        plt.xlabel('x')
+        plt.ylabel('y')
+        plt.title('Free Random Walk')
+        plt.show()
 
     def FRW(self, N):
         """
@@ -21,26 +41,14 @@ class RandomWalk:
         if N != int(N) :
             print "N must be an integer"
         else :
+            self.pre = []
             while self.k != N:
-                prex = self.x
-                prey = self.y
+                self.pre.append([self.x, self.y])
 
                 self.v = choice([0, 1, 2, 3])
-                if self.v == 0 :
-                    self.x += 1
-                elif self.v == 1 :
-                    self.y += 1
-                elif self.v == 2 :
-                    self.x += -1
-                elif self.v == 3 :
-                    self.y += -1
-                self.k += 1
+                self.Walk()
 
-                plt.plot([prex, self.x], [prey, self.y])
-            plt.xlabel('x')
-            plt.ylabel('y')
-            plt.title('Free Random Walk')
-            plt.show()
+            self.Draw()
         self.__init__()
 
     def NRRW(self, N):
@@ -50,28 +58,15 @@ class RandomWalk:
         if N != int(N) :
             print "N must be an integer"
         else :
+            self.pre = []
             while self.k != N :
-                prex = self.x
-                prey = self.y
+                self.pre.append([self.x, self.y])
 
                 self.v = choice([self.v - 1, self.v, self.v + 1])
                 self.v %= 4
+                self.Walk()
 
-                if self.v == 0 :
-                    self.x += 1
-                elif self.v == 1 :
-                    self.y += 1
-                elif self.v == 2 :
-                    self.x += -1
-                elif self.v == 3 :
-                    self.y += -1
-                self.k += 1
-
-                plt.plot([prex, self.x], [prey, self.y])
-            plt.xlabel('x')
-            plt.ylabel('y')
-            plt.title('Non Reversal Random Walk')
-            plt.show()
+            self.Draw()
         self.__init__()
 
     def SAW(self, N):
@@ -81,34 +76,20 @@ class RandomWalk:
         if N != int(N) :
             print "N must be an integer"
         else :
-            pre = []
+            self.pre = []
             while self.k != N :
-                pre.append([self.x, self.y])
+                self.pre.append([self.x, self.y])
 
                 self.v = choice([self.v - 1, self.v, self.v + 1])
                 self.v %= 4
+                self.Walk()
 
-                if self.v == 0 :
-                    self.x += 1
-                elif self.v == 1 :
-                    self.y += 1
-                elif self.v == 2 :
-                    self.x += -1
-                elif self.v == 3 :
-                    self.y += -1
-                self.k += 1
-
-                if [self.x, self.y] in pre :
+                if [self.x, self.y] in self.pre :
                     self.__init__()
                     self.SAW(N)
                     exit(0)
 
-            for i in range(len(pre) - 1):
-                plt.plot([pre[i][0], pre[i+1][0]], [pre[i][1], pre[i+1][1]])
-            plt.xlabel('x')
-            plt.ylabel('y')
-            plt.title('Self-Avoiding Random Walk')
-            plt.show()
+            self.Draw()
         self.__init__()
 
 
