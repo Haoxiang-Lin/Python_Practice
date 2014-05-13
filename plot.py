@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 def OpenData(file_name):
     '''
-    读取数据
+    open data
     '''
     log = open(file_name, 'r')
     data = []
@@ -19,7 +19,7 @@ def OpenData(file_name):
 
 def Draw(x, y):
     '''
-    画图
+    draw diagram
     '''
     font = {'family' : 'serif',
         'color'  : 'darkred',
@@ -27,8 +27,8 @@ def Draw(x, y):
         'size'   : 16,
         }
 
-    plt.plot(x, y, 'k.', label=r'$ 70^{\degree} $')
-    plt.title('FFT', fontdict=font)
+    plt.plot(x, y, 'k.', label=r'$ name $')
+    plt.title('title', fontdict=font)
     plt.xlabel('x', fontdict=font)
     plt.ylabel('y', fontdict=font)
     plt.subplots_adjust(left=0.15)
